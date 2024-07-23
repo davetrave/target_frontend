@@ -25,7 +25,7 @@ const CourseDetail = () => {
         const data = await getCourseById(id); // Fetch course data by ID
         setCourse(data[0]);
         console.log("COURSE DATA:", data.lectures);
-        setCurrentVideo(getYoutubeVideoId(data.preview_url)); // Set preview video as the initial video
+        setCurrentVideo(data.preview_url); // Set preview video as the initial video
       } catch (error) {
         console.error('Error fetching course details:', error);
       }
@@ -57,7 +57,7 @@ const CourseDetail = () => {
   }, [course]);
 
   const handleLessonClick = (videoUrl) => {
-    setCurrentVideo(getYoutubeVideoId(videoUrl));
+    setCurrentVideo(videoUrl);
   };
 
   if (!course) {
