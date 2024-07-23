@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const VITE_API_URL = 'http://localhost:8000/';
+const VITE_API_URL = 'http://davemwh.pythonanywhere.com/';
 
 const api = axios.create({
   baseURL: VITE_API_URL,
