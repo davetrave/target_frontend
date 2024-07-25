@@ -8,7 +8,7 @@ const CourseCard = ({ course }) => {
   const navigate = useNavigate()
 
   const handleCardClick = () => {
-    console.log(`Clicked on course: ${course.title}`);
+    console.log(`Clicked on course: ${course.title}, imgUrl: ${course.img_url}`);
     navigate(`/course/${course.id}`);
   };
 
@@ -35,7 +35,7 @@ const CourseCard = ({ course }) => {
     >
       <div className="w-1/3 flex-shrink-0">
         <img
-          src="https://via.placeholder.com/150" // Replace with course.image when connected to the database
+          src={course.img_url} // Replace with course.image when connected to the database
           alt={course.title}
           className="object-cover w-full h-full rounded-lg"
         />

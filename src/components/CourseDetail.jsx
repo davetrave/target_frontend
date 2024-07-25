@@ -4,6 +4,7 @@ import { getCourseById } from '../services/CourseService'; // Adjust the import 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaTv } from 'react-icons/fa';
+import YouTube from 'react-youtube';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,21 @@ const getYoutubeVideoId = (url) => {
   return match && match[7].length === 11 ? match[7] : null;
 };
 
+const videoOptions = {
+  height: '500',
+  width: '100%',
+  playerVars: {
+    autoplay: 1,
+    modestbranding: 0, // Disable the YouTube logo
+    rel: 0, // Disable related videos at the end
+    showinfo: 0, // Hide video title and uploader info
+    controls: 1, // Use controls (this needs to be set to 1 to ensure the user can control the video)
+    disablekb: 0, // Disable keyboard controls
+    iv_load_policy: 0 // Disable video annotations
+  },
+};
+
+
 const CourseDetail = () => {
   const { id } = useParams(); // Get course ID from URL
   const [course, setCourse] = useState(null);
@@ -23,9 +39,10 @@ const CourseDetail = () => {
     const fetchCourse = async () => {
       try {
         const data = await getCourseById(id); // Fetch course data by ID
-        setCourse(data[0]);
+        setCourse(data);
         console.log("COURSE DATA:", data.lectures);
         setCurrentVideo(data.preview_url); // Set preview video as the initial video
+
       } catch (error) {
         console.error('Error fetching course details:', error);
       }
@@ -69,14 +86,9 @@ const CourseDetail = () => {
       <h1 className="text-3xl font-bold mb-4">{course.title}</h1>
       <p className="text-lg mb-4">{course.description}</p>
       <div className="aspect-w-16 aspect-h-9 mb-4">
-        <iframe
-          src={`https://www.youtube.com/embed/${currentVideo}`} // Use currentVideo state
-          title={course.title}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="w-full h-full rounded-lg"
-        />
+        <div className="course-video mb-8">
+          <YouTube videoId={currentVideo} opts={videoOptions} />
+        </div>
       </div>
       <h2 className="text-2xl font-bold mb-4">Lessons</h2>
       <div className="space-y-4">
@@ -91,7 +103,7 @@ const CourseDetail = () => {
             </div>
             <FaTv
               className="text-white text-2xl cursor-pointer"
-              onClick={() => handleLessonClick(lesson.videoUrl)} // Set the lesson video as currentVideo
+              onClick={() => handleLessonClick(lesson.video_url)} // Set the lesson video as currentVideo
             />
           </div>
         ))}
