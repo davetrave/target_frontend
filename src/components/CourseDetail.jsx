@@ -83,13 +83,13 @@ const CourseDetail = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold mb-4">{course.title}</h1>
-      <p className="text-lg mb-4">{course.description}</p>
       <div className="aspect-w-16 aspect-h-9 mb-4">
         <div className="course-video mb-8">
           <YouTube videoId={currentVideo} opts={videoOptions} />
         </div>
       </div>
+      <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
+      
       <h2 className="text-2xl font-bold mb-4">Lessons</h2>
       <div className="space-y-4">
         {course.lectures.map((lesson) => (
