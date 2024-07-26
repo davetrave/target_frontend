@@ -16,7 +16,7 @@ const getYoutubeVideoId = (url) => {
 };
 
 const videoOptions = {
-  height: '140',
+  height: '200',
   width: '100%',
   playerVars: {
     autoplay: 1,
