@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getCourseById } from '../services/CourseService'; // Adjust the import if necessary
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaTv } from 'react-icons/fa';
+import { FaPlay } from 'react-icons/fa';
 import YouTube from 'react-youtube';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -91,7 +91,7 @@ const CourseDetail = () => {
       <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
       
       {/* <h2 className="text-2xl font-bold mb-4">Lessons</h2> */}
-      <div className="space-y-4">
+      <div className="space-y-4 mb-60">
         {course.lectures.map((lesson) => (
           <div
             key={lesson.id}
@@ -101,7 +101,7 @@ const CourseDetail = () => {
               <h3 className="text-xl font-bold mb-2 text-white">{lesson.title}</h3>
               <p className="text-gray-400 mb-2">{lesson.description}</p>
             </div>
-            <FaTv
+            <FaPlay
               className="text-white text-2xl cursor-pointer"
               onClick={() => handleLessonClick(lesson.video_url)} // Set the lesson video as currentVideo
             />
