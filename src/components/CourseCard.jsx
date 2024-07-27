@@ -37,7 +37,7 @@ const CourseCard = ({ course }) => {
         <img
           src={course.img_url} // Replace with course.image when connected to the database
           alt={course.title}
-          className="object-cover w-full h-full rounded-lg"
+          className="h-auto max-w-full rounded-lg"
         />
       </div>
       <div className="w-2/3 pl-4">

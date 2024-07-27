@@ -86,6 +86,7 @@ const CourseDetail = () => {
       <div className="aspect-w-16 aspect-h-9 mb-4">
         <div className="course-video mb-8">
           <YouTube videoId={currentVideo} opts={videoOptions} />
+
         </div>
       </div>
       <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
@@ -114,7 +115,8 @@ const CourseDetail = () => {
 
 export default CourseDetail;
 
-{/* <div className="p-4">
+{/* 
+  <div className="p-4">
                 <ReactPlayer
                   url={course.preview_url}
                   controls
@@ -130,4 +132,6 @@ export default CourseDetail;
                     },
                   }}
                 />
-              </div> */}
+              </div>
+  
+  */}

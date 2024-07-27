@@ -260,15 +260,17 @@ const CourseList = () => {
         <div className="parallax-bg absolute inset-0 z-0 bg-gradient-to-br from-purple-600 via-blue-500 to-purple-700"></div>
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course) => (
-            <div
-              key={course.id}
-              className="relative overflow-hidden rounded-lg border-l-4 border-purple-600 shadow-lg bg-white bg-opacity-70"
-            >
-              <div className="p-4">
-                <CourseCard course={course} />
-              </div>
+            <CourseCard course={course} />
+            // <div
+
+            //   key={course.id}
+            //   className="relative overflow-hidden rounded-lg border-l-4 border-purple-600 shadow-lg bg-white bg-opacity-70"
+            // >
+            //   <div className="p-4">
+                
+            //   </div>
               
-            </div>
+            // </div>
           ))}
         </div>
       </div>
