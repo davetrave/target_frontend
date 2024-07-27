@@ -113,3 +113,21 @@ const CourseDetail = () => {
 };
 
 export default CourseDetail;
+
+{/* <div className="p-4">
+                <ReactPlayer
+                  url={course.preview_url}
+                  controls
+                  config={{
+                    youtube: {
+                      playerVars: {
+                        modestbranding: 1,
+                        showinfo: 0,
+                        rel: 0,
+                        iv_load_policy: 3,
+                        disablekb: 1,
+                      },
+                    },
+                  }}
+                />
+              </div> */}
