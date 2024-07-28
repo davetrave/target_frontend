@@ -146,6 +146,7 @@ const CourseList = () => {
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [fetchError, setFetchError] = useState(null);
+  const [gradient, setGradient] = useState("from-purple-600 via-blue-500 to-purple-700")
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -211,12 +212,16 @@ const CourseList = () => {
     let filtered = courses;
 
     if (category === 'all') {
-      filtered = courses
+      filtered = courses;
+      setGradient("from-purple-600 via-blue-500 to-purple-700");
     }
     else if (category === 'beginner') {
       filtered = courses.filter(course => course.category === 1);
+      setGradient("from-purple-600 via-blue-500 to-purple-700");
+
     } else if (category === 'featured') {
       filtered = courses.filter(course => course.category === 2);
+      setGradient("from-purple-600 via-pink-500 to-purple-700");
     }
     setFilteredCourses(filtered);
   };
@@ -257,7 +262,8 @@ const CourseList = () => {
           </div>
         )}
         <h2 className="text-3xl font-bold mb-4">Courses</h2>
-        <div className="parallax-bg absolute inset-0 z-0 bg-gradient-to-br from-purple-600 via-blue-500 to-purple-700"></div>
+
+        <div className={` absolute inset-0 z-0 bg-gradient-to-br ${gradient}`}></div>
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course) => (
             <CourseCard course={course} />
