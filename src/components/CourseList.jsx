@@ -213,7 +213,7 @@ const CourseList = () => {
 
     if (category === 'all') {
       filtered = courses;
-      setGradient("from-purple-600 via-blue-500 to-purple-700");
+      setGradient("from-green-700 via-yellow-500 to-red-700");
     }
     else if (category === 'beginner') {
       filtered = courses.filter(course => course.category === 1);
