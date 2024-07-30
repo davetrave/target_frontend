@@ -83,7 +83,7 @@ const CourseDetail = () => {
     <div className="p-4">
       <div className="aspect-w-16 aspect-h-9 mb-4">
         <div className="course-video mb-8">
-          <YouTube videoId={currentVideo} opts={videoOptions} />
+          <ReactPlayer url={currentVideo} controls width="100%" height="100%" />
         </div>
       </div>
       <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
