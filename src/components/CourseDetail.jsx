@@ -4,7 +4,7 @@ import { getCourseById } from '../services/CourseService';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaPlay, FaCaretDown, FaCaretRight } from 'react-icons/fa';
-import YouTube from 'react-youtube';
+import ReactPlayer from 'react-player';
 import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 
