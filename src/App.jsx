@@ -1,54 +1,43 @@
-import React, { useState, useEffect } from 'react';
+// App.js
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CartProvider from './context/CartContext';
 import CourseList from './components/CourseList';
-// import AddCourseForm from './components/AddCourseForm';
 import CourseDetail from './components/CourseDetail';
+import Cart from './components/Cart';
 import BottomNavBar from './components/BottomNavBar';
 import LandingPage from './components/LandingPage';
-import Login from './components/Login'
-import Register from "./components/Register"
-import Protected from "./components/ProtectedRoute"
+import Login from './components/Login';
+import Register from "./components/Register";
+import Protected from "./components/ProtectedRoute";
 
 const App = () => {
-
-  const HandleRegister = (route, method) => {
-    localStorage.clear()
-    return <Register />
-  }
-  
   return (
-    
-    
-     <BrowserRouter>
-       
-         <Routes>
-          
-            <Route path="/" exact element={<Protected><LandingPage /></Protected>} />
-            <Route path="/home" exact element={<Protected><LandingPage /></Protected>} />
-            <Route path="/courses" exact element={<Protected><CourseList /></Protected>} />
-            {/* <Route path="/settings" element={<Protected><SettingsPage /></Protected>} /> */}
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
-           <Route path="/login" exact element={<Login />} />
-           <Route path="/register" exact element={<HandleRegister />} />
-           
-         </Routes>
-         <BottomNavBar/>
-       
-     </BrowserRouter>
-     
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<Protected><LandingPage /></Protected>} />
+          <Route path="/home" exact element={<Protected><LandingPage /></Protected>} />
+          <Route path="/courses" exact element={<Protected><CourseList /></Protected>} />
+          <Route path="/My Cart" exact element={<Protected><Cart /></Protected>} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
+          <Route path="/login" exact element={<Login />} />
+          <Route path="/register" exact element={<Register />} />
+        </Routes>
+        <BottomNavBar />
+      </BrowserRouter>
+    </CartProvider>
   );
 };
 
-
-
 const SettingsPage = () => {
-    return (
-  <div className="p-4">
-    <h1 className="text-2xl font-bold mb-4">Settings</h1>
-    <p>Manage your account settings here.</p>
-  </div>
-    );
-  };
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Settings</h1>
+      <p>Manage your account settings here.</p>
+    </div>
+  );
+};
 
 export default App;
