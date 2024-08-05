@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartProvider from './context/CartContext';
 import CourseList from './components/CourseList';
 import CourseDetail from './components/CourseDetail';
+import CourseOverview from './components/CourseOverview';
 import Cart from './components/Cart';
 import BottomNavBar from './components/BottomNavBar';
 import LandingPage from './components/LandingPage';
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/My Cart" exact element={<Protected><Cart /></Protected>} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
+          <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
         </Routes>

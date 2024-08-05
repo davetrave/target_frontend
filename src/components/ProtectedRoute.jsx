@@ -10,11 +10,11 @@ const Protected = ({children}) => {
 
     useEffect(() => {
         //auth()
-        auth().catch(() => {setIsAuth(false)}) 
-        console.log("Exp = ", tokenExpT, ", auth", isAuth)
+        auth().catch(() => {setIsAuth(false)})
     }, [])
 
     const refreshToken =  async () => {
+
         const refreshToken = localStorage.getItem("refresh")
         try {
             const response = await api.post("api/user/token/refresh/", {refresh:refreshToken})
@@ -29,8 +29,6 @@ const Protected = ({children}) => {
             setIsAuth(false)
             console.log(error)
         }
-        
-
     }
 
     const auth = async () => {
@@ -54,9 +52,6 @@ const Protected = ({children}) => {
         else {
             await refreshToken()
         }
-        
-
-
     }
 
     if (isAuth == null) {

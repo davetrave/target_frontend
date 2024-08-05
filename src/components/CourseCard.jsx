@@ -11,12 +11,12 @@ const CourseCard = ({ course }) => {
   const [inCart, setInCart] = useState(false);
 
   useEffect(() => {
-    const isInCart = cart.some(cartItem => cartItem.course_id === course.id);
+    const isInCart = cart.some(cartItem => cartItem.course.id === course.id);
     setInCart(isInCart);
   }, [cart, course.id]);
 
   const handleCardClick = () => {
-    navigate(`/course/${course.id}`);
+    navigate(`/course/overview/${course.id}`);
   };
 
   const handleButtonClick = (e) => {
@@ -67,7 +67,7 @@ const CourseCard = ({ course }) => {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className={`magic-button ml-4 px-3 py-2 text-sm font-semibold text-white rounded-lg flex items-center ${inCart ? 'bg-green-500 cursor-not-allowed' : ''}`}
+            className={`ml-4 px-3 py-2 text-sm font-semibold text-white rounded-lg flex items-center ${inCart ? 'bg-green-500 cursor-not-allowed' : 'magic-button' }`}
             onClick={handleButtonClick}
             disabled={inCart}
           >

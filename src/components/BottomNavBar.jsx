@@ -3,26 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { FaHome, FaBook, FaCog, FaShoppingCart } from 'react-icons/fa';
 import gsap from 'gsap';
 import { CartContext } from '../context/CartContext';
-import { getCart } from '../services/CartService';
+
 
 const BottomNavBar = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const { cartCount, setCartCount } = useContext(CartContext);
+  const { cartCount } = useContext(CartContext);
   const navRefs = useRef([]);
-
-  useEffect(() => {
-    // Fetch cart count from the API
-    const fetchCartCount = async () => {
-      try {
-        const response = await getCart();
-        setCartCount(response.length);
-      } catch (error) {
-        console.error('Error fetching cart count:', error);
-      }
-    };
-
-    fetchCartCount();
-  }, [setCartCount]);
 
   useEffect(() => {
     const animateTab = (index) => {

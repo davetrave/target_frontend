@@ -28,3 +28,13 @@ export const getCourseById = async (id) => {
   }
   
 };
+
+export const getCourseComments = async (courseId) => {
+  const response = await api.get(`api/courses/${courseId}/comments/`);
+  return response.data;
+};
+
+export const postCourseComment = async (courseId, commentData) => {
+  const response = await api.post(`api/courses/${courseId}/comments/`, commentData);
+  return response.data;
+};
