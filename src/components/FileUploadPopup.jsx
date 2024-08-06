@@ -3,14 +3,19 @@ import { Modal, Box, Button, Typography } from '@mui/material';
 
 const FileUploadPopup = ({ open, handleClose, handleSubmit }) => {
   const [file, setFile] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false); // State to manage button disable
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];
     setFile(uploadedFile);
   };
 
-  const handlePopupSubmit = () => {
-    handleSubmit(file);
+  const handlePopupSubmit = async () => {
+    if (file && !isSubmitting) {
+      setIsSubmitting(true); // Disable the button
+      await handleSubmit(file);
+      setIsSubmitting(false); // Reset the button after submission is complete
+    }
   };
 
   return (
@@ -53,7 +58,12 @@ const FileUploadPopup = ({ open, handleClose, handleSubmit }) => {
           </Box>
         )}
         <Box mt={2} display="flex" justifyContent="space-between">
-          <Button variant="contained" color="primary" onClick={handlePopupSubmit}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handlePopupSubmit}
+            disabled={isSubmitting} // Disable button if submitting
+          >
             Submit
           </Button>
           <Button variant="outlined" onClick={handleClose}>

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaTrash, FaShoppingCart } from 'react-icons/fa';
 import FileUploadPopup from './FileUploadPopup';
 import { purchaseCourse } from '../services/CartService';
-import { removeFromCart } from '../services/CartService';
+import { CartContext } from '../context/CartContext';
 
 const CartItem = ({ item, onRemove }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isCheckoutPending, setCheckoutPending] = useState(false);
+  const { removeFromCart, updatePurchasedCourses} = useContext(CartContext);
 
 
   const handleCheckoutClick = () => {
@@ -18,6 +19,8 @@ const CartItem = ({ item, onRemove }) => {
       try {
         // Purchase the course
         await purchaseCourse(item.course.id, file);
+
+        await updatePurchasedCourses()
 
         // Remove the course from the cart
         await removeFromCart(item.id);
@@ -42,7 +45,7 @@ const CartItem = ({ item, onRemove }) => {
         <img
           src={item.course.img_url}
           alt={item.course.title}
-          className="w-16 h-16 object-cover rounded-full mr-4"
+          className="w-16 h-16 object-cover rounded-lg mr-4"
         />
         <span className="flex-grow">{item.course.title}</span>
       </div>

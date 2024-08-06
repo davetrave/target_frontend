@@ -1,4 +1,3 @@
-// CourseCard.js
 import React, { useContext, useEffect, useState } from 'react';
 import { FaStar, FaCartPlus, FaCheck } from 'react-icons/fa';
 import { gsap } from 'gsap';
@@ -7,13 +6,17 @@ import { CartContext } from '../context/CartContext';
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
-  const { cart, addToCart } = useContext(CartContext);
+  const { cart, addToCart, purchasedCourses } = useContext(CartContext);
   const [inCart, setInCart] = useState(false);
+  const [isPurchased, setIsPurchased] = useState(false);
 
   useEffect(() => {
     const isInCart = cart.some(cartItem => cartItem.course.id === course.id);
     setInCart(isInCart);
-  }, [cart, course.id]);
+
+    const isCoursePurchased = purchasedCourses.some(purchased => purchased.course === course.id);
+    setIsPurchased(isCoursePurchased);
+  }, [cart, purchasedCourses, course.id]);
 
   const handleCardClick = () => {
     navigate(`/course/overview/${course.id}`);
@@ -21,7 +24,7 @@ const CourseCard = ({ course }) => {
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
-    if (!inCart) {
+    if (!inCart && !isPurchased) {
       addToCart(course.id);
     }
   };
@@ -67,11 +70,11 @@ const CourseCard = ({ course }) => {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className={`ml-4 px-3 py-2 text-sm font-semibold text-white rounded-lg flex items-center ${inCart ? 'bg-green-500 cursor-not-allowed' : 'magic-button' }`}
+            className={`ml-4 px-3 py-2 text-sm font-semibold text-white rounded-lg flex items-center ${isPurchased ? 'bg-blue-500 cursor-not-allowed' : inCart ? 'bg-green-500 cursor-not-allowed' : 'magic-button'}`}
             onClick={handleButtonClick}
-            disabled={inCart}
+            disabled={isPurchased || inCart}
           >
-            {inCart ? <><FaCheck className="mr-2" /> Added to Cart</> : <><FaCartPlus className="mr-2" /> Add to Cart</>}
+            {isPurchased ? <><FaCheck className="mr-2" /> Purchased</> : inCart ? <><FaCheck className="mr-2" /> Added to Cart</> : <><FaCartPlus className="mr-2" /> Add to Cart</>}
           </button>
         </div>
       </div>

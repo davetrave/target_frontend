@@ -22,6 +22,11 @@ const purchaseCourse = async (courseId, proofOfPurchaseFile) => {
   return purchaseResponse.data;
 };
 
+const getPurchasedCourses = async () => {
+  const response = await api.get("api/purchase/");
+  return response.data;
+};
+
 const addToCart = async (courseId) => {
   const response = await api.post("api/cart/", { course_id: courseId });
   return response.data;
@@ -32,4 +37,4 @@ const removeFromCart = async (cartId) => {
   return response.data;
 };
 
-export { getCart, addToCart, removeFromCart, purchaseCourse };
+export { getCart, addToCart, removeFromCart, purchaseCourse, getPurchasedCourses };

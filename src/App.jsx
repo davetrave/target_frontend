@@ -1,10 +1,10 @@
-// App.js
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartProvider from './context/CartContext';
 import CourseList from './components/CourseList';
 import CourseDetail from './components/CourseDetail';
 import CourseOverview from './components/CourseOverview';
+import MyCourses from './components/MyCourses';
 import Cart from './components/Cart';
 import BottomNavBar from './components/BottomNavBar';
 import LandingPage from './components/LandingPage';
@@ -21,13 +21,18 @@ const App = () => {
           <Route path="/home" exact element={<Protected><LandingPage /></Protected>} />
           <Route path="/courses" exact element={<Protected><CourseList /></Protected>} />
           <Route path="/My Cart" exact element={<Protected><Cart /></Protected>} />
+          <Route path="/My" exact element={<Protected><MyCourses /></Protected>} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
           <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
         </Routes>
-        <BottomNavBar />
+        {/* Conditionally render BottomNavBar based on the current path */}
+        {location.pathname !== '/login' && location.pathname !== '/register' && (
+          <BottomNavBar />
+        )}
+        
       </BrowserRouter>
     </CartProvider>
   );
