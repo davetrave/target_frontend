@@ -37,7 +37,7 @@ const MyCourses = () => {
         <div className="flex flex-wrap justify-center">
           {purchasedCourses.map((item, index) => (
             <div
-              onClick={(id) => {handleCardClick(id)}}
+              onClick={(id) => {handleCardClick(item.course)}}
               key={item.id}
               ref={(el) => (purchasedRef.current[index] = el)}
               className="purchased-item p-4 m-2 bg-gray-800 rounded-lg shadow-lg text-white w-full sm:w-1/2"

@@ -28,10 +28,11 @@ const App = () => {
           <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
-          
         </Routes>
         
+        
       </BrowserRouter>
+      <BottomNavBar />
     </CartProvider>
       
     
