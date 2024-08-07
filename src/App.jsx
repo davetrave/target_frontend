@@ -29,10 +29,9 @@ const App = () => {
           <Route path="/login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
         </Routes>
-        
-        
+        <BottomNavBar />
       </BrowserRouter>
-      <BottomNavBar />
+      
     </CartProvider>
       
     
