@@ -51,7 +51,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   response => response,
   async error => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     if (error.response && error.response.status === 401) {
       try {
@@ -68,7 +68,7 @@ api.interceptors.response.use(
         // Redirect to login if refresh fails
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
-        navigate('/login'); // Use navigate to redirect to login
+        //navigate('/login'); // Use navigate to redirect to login
       }
     }
 

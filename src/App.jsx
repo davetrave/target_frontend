@@ -16,6 +16,7 @@ const App = () => {
   return (
     <CartProvider>
       <BrowserRouter>
+      
         <Routes>
           <Route path="/" exact element={<Protected><LandingPage /></Protected>} />
           <Route path="/home" exact element={<Protected><LandingPage /></Protected>} />
@@ -27,14 +28,13 @@ const App = () => {
           <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
+          
         </Routes>
-        {/* Conditionally render BottomNavBar based on the current path */}
-        {location.pathname !== '/login' && location.pathname !== '/register' && (
-          <BottomNavBar />
-        )}
         
       </BrowserRouter>
     </CartProvider>
+      
+    
   );
 };
 

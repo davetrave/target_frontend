@@ -11,9 +11,12 @@ const CartProvider = ({ children }) => {
   const updateCart = async () => {
     try {
       const cartData = await getCart();
-      setCart(cartData);
-      setCartCount(cartData.length);
-      console.log("CART DATA:= ", cartData);
+      console.log("cartData => ", cartData)
+      if(cartData) {
+        setCart(cartData);
+        setCartCount(cartData.length);
+      }
+      
     } catch (error) {
       console.error('Error fetching cart:', error);
     }
@@ -22,8 +25,10 @@ const CartProvider = ({ children }) => {
   const updatePurchasedCourses = async () => {
     try {
       const purchasedData = await getPurchasedCourses();
-      setPurchasedCourses(purchasedData);
-      console.log("Purchased => ", purchasedData)
+      if (purchasedData) {
+        setPurchasedCourses(purchasedData);
+        console.log("Purchased => ", purchasedData)
+      }
     } catch (error) {
       console.error('Error fetching purchased courses:', error);
     }

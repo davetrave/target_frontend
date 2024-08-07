@@ -1,9 +1,14 @@
 import api from './AuthService';
 
 const getCart = async () => {
-  const response = await api.get("api/cart/");
-  console.log("CART => ", response)
-  return response.data;
+  try {  
+    const response = await api.get("api/cart/");
+    console.log("CART => ", response)
+    return response.data;
+  } catch(error) {
+    console.log("Server Error => ", error.response.data.detail)
+  }
+  
 };
 
 const purchaseCourse = async (courseId, proofOfPurchaseFile) => {
@@ -23,8 +28,13 @@ const purchaseCourse = async (courseId, proofOfPurchaseFile) => {
 };
 
 const getPurchasedCourses = async () => {
-  const response = await api.get("api/purchase/");
-  return response.data;
+  try { 
+    const response = await api.get("api/purchase/");
+    return response.data;
+  } catch(error) {
+    console.log("Server Error => ", error)
+  }
+  
 };
 
 const addToCart = async (courseId) => {
