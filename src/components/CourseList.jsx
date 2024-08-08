@@ -11,7 +11,7 @@ const CourseList = () => {
   const [fetchError, setFetchError] = useState(null);
   const [cart, setCart] = useState([]);
   const [gradient, setGradient] = useState('from-purple-600 via-blue-500 to-purple-700');
-  const { setCartCount } = useContext(CartContext);
+  const { setCartCount, updatePurchasedCourses } = useContext(CartContext);
 
   useEffect(() => {
     const fetchCoursesAndCart = async () => {
@@ -27,6 +27,8 @@ const CourseList = () => {
     };
 
     fetchCoursesAndCart();
+    updatePurchasedCourses();
+
   }, []);
 
   useEffect(() => {
@@ -81,10 +83,10 @@ const CourseList = () => {
       filtered = courses;
       setGradient('from-green-700 via-yellow-500 to-red-700');
     } else if (category === 'G-11') {
-      filtered = courses.filter((course) => course.category === "Grade 12");
-      setGradient('from-purple-600 via-blue-500 to-purple-700');
-    } else if (category === 'featured') {
       filtered = courses.filter((course) => course.category === "Grade 11");
+      setGradient('from-purple-600 via-blue-500 to-purple-700');
+    } else if (category === 'G-12') {
+      filtered = courses.filter((course) => course.category === "Grade 12");
       setGradient('from-purple-600 via-pink-500 to-purple-700');
     }
     setFilteredCourses(filtered);

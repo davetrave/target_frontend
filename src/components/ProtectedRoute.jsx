@@ -64,7 +64,7 @@ import { CartContext } from '../context/CartContext';
 
 const Protected = ({ children }) => {
   const [isAuth, setIsAuth] = useState(null);
-  const { updateCart } = useContext(CartContext);
+  const { updateCart, updatePurchasedCourses } = useContext(CartContext);
 
   useEffect(() => {
     auth();
@@ -78,6 +78,7 @@ const Protected = ({ children }) => {
         localStorage.setItem('access', response.data.access);
         setIsAuth(true);
         updateCart(); // Update cart after refreshing token
+        updatePurchasedCourses; // Update PurchasedCourses after refreshing token
       } else {
         setIsAuth(false);
       }
