@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble } from 'react-icons/fa';
+import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble, FaBookOpen } from 'react-icons/fa';
 import gsap from 'gsap';
 import { CartContext } from '../context/CartContext';
 import confetti from 'canvas-confetti'; // Import confetti library
@@ -46,7 +46,7 @@ const BottomNavBar = () => {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white flex justify-around items-center py-2">
+    <nav className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white flex justify-around items-center py-2 z-30">
       {['home', 'courses', 'My Cart', 'My', 'settings'].map((tab, index) => (
         <NavLink
           to={`/${tab}`}
@@ -67,8 +67,8 @@ const BottomNavBar = () => {
               )}
             </div>
           )}
-          {tab === 'My' && <FaUniversity className="nav-link-icon" size={20} />}
-          {tab === 'settings' && <FaCheckDouble className="nav-link-icon" size={20} />}
+          {tab === 'My' && <FaBookOpen className="nav-link-icon" size={20} />}
+          {tab === 'settings' && <FaCog className="nav-link-icon" size={20} />}
           {activeTab === tab && (
             <span className="text-xs mt-1">
               {tab.charAt(0).toUpperCase() + tab.slice(1)}

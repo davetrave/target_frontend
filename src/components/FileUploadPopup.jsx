@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Modal, Box, Button, Typography } from '@mui/material';
+import { useFlashMessage } from '../context/FlashMessageContext';
 
 const FileUploadPopup = ({ open, handleClose, handleSubmit }) => {
+  const showMessage = useFlashMessage(); // Get the showMessage function
   const [file, setFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false); // State to manage button disable
 
@@ -13,7 +15,9 @@ const FileUploadPopup = ({ open, handleClose, handleSubmit }) => {
   const handlePopupSubmit = async () => {
     if (file && !isSubmitting) {
       setIsSubmitting(true); // Disable the button
+      showMessage('Your Data is Being Processed ', 'success')
       await handleSubmit(file);
+      showMessage('File is Submitted, It Might Take a Few Minutes To Verify Your Payment', 'success')
       setIsSubmitting(false); // Reset the button after submission is complete
     }
   };
