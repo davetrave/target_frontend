@@ -155,7 +155,7 @@ const Cart = () => {
   }, [cart]);
 
   return (
-    <div className="relative overflow-hidden h-screen bg-black">
+    <div className="relative overflow-hidden h-screen bg-black mb-10 pb-20">
       <h2 className="text-3xl text-white text-center my-4">My Cart</h2>
       {cart.length > 0 ? (
         <div className="flex flex-wrap justify-center">

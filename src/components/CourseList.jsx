@@ -103,7 +103,7 @@ const CourseList = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gray-900 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-gray-900 text-white overflow-hidden mb-10 pb-20">
       <div className="absolute inset-0 z-0 stars-bg"></div>
       <div className="absolute inset-x-0 top-0 z-20 bg-gray-800 bg-opacity-60 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -133,4 +133,5 @@ const CourseList = () => {
 };
 
 export default CourseList;
+
 

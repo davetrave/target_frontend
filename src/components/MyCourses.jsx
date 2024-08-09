@@ -2,14 +2,24 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { CartContext } from '../context/CartContext';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
+import { useFlashMessage } from '../context/FlashMessageContext';
 
 const MyCourses = () => {
+  const showMessage = useFlashMessage(); // Get the showMessage function
   const navigate = useNavigate();
   const { purchasedCourses } = useContext(CartContext);
   const purchasedRef = useRef([]);
   
-  const handleCardClick = (courseId) => {
-    navigate(`/course/${courseId}`);
+  const handleCardClick = (course) => {
+
+    if (course.verified) {
+      showMessage('Enjoy your course!', 'error')
+      navigate(`/course/${courseId}`);
+    }
+    else {
+      showMessage('Please, wait until your purchase is verified, We appreciate your patience!', 'error')
+    }
+    
   };
 
 
@@ -46,12 +56,16 @@ const MyCourses = () => {
                 <img
                   src={item.course.img_url}
                   alt={item.course.title}
-                  className="w-16 h-16 object-cover rounded-lg mr-4"
+                  className="w-32 h-auto object-cover rounded-lg mr-4"
                 />
                 <span className="flex-grow">{item.course.title}</span>
               </div>
               <div className="mt-2">
-                <span className="text-green-500">Verified Purchase</span>
+                {item.course.verified ? (
+                  <span className="text-green-500">Verified Purchase</span>
+                ) : (
+                  <span className="text-red-500">Payment Unverified</span>
+                )}
               </div>
             </div>
           ))}

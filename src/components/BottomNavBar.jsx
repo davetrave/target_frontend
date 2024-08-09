@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaBook, FaCog, FaShoppingCart, FaMemory } from 'react-icons/fa';
+import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble } from 'react-icons/fa';
 import gsap from 'gsap';
 import { CartContext } from '../context/CartContext';
 import confetti from 'canvas-confetti'; // Import confetti library
@@ -46,12 +46,12 @@ const BottomNavBar = () => {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white flex justify-around items-center py-2">
+    <nav className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white flex justify-around items-center py-2">
       {['home', 'courses', 'My Cart', 'My', 'settings'].map((tab, index) => (
         <NavLink
           to={`/${tab}`}
           key={tab}
-          className={`nav-link relative z-10 flex flex-col items-center cursor-pointer ${activeTab === tab ? 'text-blue-400' : 'text-gray-400'}`}
+          className={`nav-link relative z-10 flex flex-col items-center cursor-pointer ${activeTab === tab ? 'text-yellow-400' : 'text-white-400'}`}
           onClick={() => handleNavClick(tab, index)}
           ref={(el) => (navRefs.current[index] = el)}
         >
@@ -67,8 +67,8 @@ const BottomNavBar = () => {
               )}
             </div>
           )}
-          {tab === 'My' && <FaMemory className="nav-link-icon" size={20} />}
-          {tab === 'settings' && <FaCog className="nav-link-icon" size={20} />}
+          {tab === 'My' && <FaUniversity className="nav-link-icon" size={20} />}
+          {tab === 'settings' && <FaCheckDouble className="nav-link-icon" size={20} />}
           {activeTab === tab && (
             <span className="text-xs mt-1">
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -81,3 +81,4 @@ const BottomNavBar = () => {
 };
 
 export default BottomNavBar;
+

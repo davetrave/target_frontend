@@ -253,6 +253,116 @@
   }
 }
 
+nav {
+  background-color: #1c1c1c;
+  padding: 0.5rem 0;
+}
+
+.nav-link {
+  transition: transform 0.2s ease;
+}
+
+.active-tab .nav-link-icon {
+  background-color: red;
+  border: 2px solid blue;
+  border-radius: 50%;
+  padding: 5px;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.active-tab span {
+  color: blue;
+  font-weight: bold;
+}
+
+.nav-link-icon {
+  transition: transform 0.3s ease;
+}
+
+nav .nav-link:hover .nav-link-icon {
+  transform: scale(1.1);
+}
+
+.nav-link.active-tab .nav-link-icon {
+  transform: scale(1.2);
+}
+
+.nav-link .nav-link-icon {
+  transform: scale(1);
+}
+
+.course-slider {
+  scroll-snap-type: x mandatory;
+}
+
+.course-card {
+  width: 80%;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+@media (min-width: 640px) {
+  .course-card {
+    width: 60%;
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .course-card {
+    width: 40%;
+    max-width: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-card {
+    width: 30%;
+    max-width: 220px;
+  }
+}
+
+.stars-bg {
+  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHN0YXJ8ZW58MHx8fHwxNjE5OTc0NzQw&ixlib=rb-1.2.1&q=80&w=1080');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+
+.nav-pill {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-pill:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-link-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #1a202c; /* Dark background for active tab */
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.active-tab .nav-link-icon-container {
+  background-color: #1a202c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border: 2px solid #3b82f6; /* Blue border for the active tab */
+}
+
+
+
+
 
 
   

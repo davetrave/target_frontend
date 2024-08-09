@@ -80,11 +80,19 @@ const CourseDetail = () => {
   }
 
   return (
-    <div className="p-4">
-      <div className="aspect-w-16 aspect-h-9 mb-4">
-        <div className="course-video mb-8">
-          <ReactPlayer url={currentVideo} controls width="100%" height="100%" />
-        </div>
+    <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
+      {/* Header video */}
+      <div className="relative h-auto w-full overflow-hidden">
+          <ReactPlayer 
+                      url={course.preview_url} 
+                      controls 
+                      className="mb-4"
+                      width="100%"
+                  />
+          {/* <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+              <h1 className="text-4xl font-bold text-white">{course.title}</h1>
+          </div> */}
       </div>
       <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
 
@@ -93,21 +101,20 @@ const CourseDetail = () => {
           <AccordionItem key={lecture.id}>
             <AccordionItemHeading>
               <AccordionItemButton className="flex justify-between items-center bg-gray-800 bg-opacity-60 p-4 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out relative overflow-hidden flex justify-between items-center">
-                <h3 className="text-xl font-bold">{lecture.title}</h3>
+                <h6 className="text-sm font-bold">{lecture.title}</h6>
                 <FaCaretRight className="accordion-caret" />
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="space-y-4">
+              <div className="space-y-2">
                 {lecture.lessons.map((lesson) => (
                   <div
                     key={lesson.id}
-                    className="lesson-card bg-gray-800 bg-opacity-60 p-4 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out relative overflow-hidden flex justify-between items-center"
+                    className="lesson-card bg-gray-800 bg-opacity-60 p-3 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out relative overflow-hidden flex justify-between items-center"
                     onClick={() => handleLessonClick(lesson.video_url)}
                   >
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-white">{lesson.title}</h3>
-                      <p className="text-gray-400 mb-2">{lesson.description}</p>
+                      <p className="text-gray-400 mb-1 text-sm">{lesson.title}</p>
                     </div>
                     <FaPlay className="text-white text-2xl cursor-pointer" />
                   </div>

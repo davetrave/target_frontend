@@ -14,7 +14,7 @@ const CourseCard = ({ course }) => {
     const isInCart = cart.some(cartItem => cartItem.course.id === course.id);
     setInCart(isInCart);
 
-    const isCoursePurchased = purchasedCourses.some(purchased => purchased.course === course.id);
+    const isCoursePurchased = purchasedCourses.some(purchased => purchased.course.id === course.id);
     setIsPurchased(isCoursePurchased);
   }, [cart, purchasedCourses, course.id]);
 

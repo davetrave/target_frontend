@@ -202,32 +202,36 @@ const CourseOverview = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white">
+        <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
             {/* Header Image */}
-            <div className="relative h-64 w-full overflow-hidden">
-                <img
-                    src={course.img_url} 
-                    alt={course.title}
-                    className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <h1 className="text-4xl font-bold text-white">{course.title}</h1>
-                </div>
-            </div>
-
-            <div className="container mx-auto p-4">
-                <div className="flex flex-col md:flex-row">
-                    {/* Left Column: Course Content */}
-                    <div className="md:w-2/3">
-                        <h2 className="text-2xl font-bold mb-4">Course Description</h2>
-                        <p className="text-lg mb-4">{course.description}</p>
-                        <ReactPlayer 
+            <div className="relative h-auto w-full overflow-hidden">
+                <ReactPlayer 
                             url={course.preview_url} 
                             controls 
                             className="mb-4"
                             width="100%"
                         />
+                {/* <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <h1 className="text-4xl font-bold text-white">{course.title}</h1>
+                </div> */}
+            </div>
+
+            <div className="container mx-auto p-4">
+                <div className="flex flex-col md:flex-row">
+                    {/* Right Column: Instructor Info and Related Courses */}
+                    <div className="md:w-1/3 md:pl-8">
+                        <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                            <h2 className="text-2xl font-semibold mb-2">Instructor</h2>
+                            <p>{course.author}</p>
+                        </div>
+                        
+                    </div>
+                    {/* Left Column: Course Content */}
+                    <div className="md:w-2/3">
+                        <h2 className="text-2xl font-bold mb-4">Course Description</h2>
+                        <p className="text-lg mb-4">{course.description}</p>
+                        
                         <div className="bg-gray-800 p-4 rounded-lg mb-4">
                             <h2 className="text-2xl font-semibold mb-2">Course Content</h2>
                             <div className="space-y-4">
@@ -264,17 +268,7 @@ const CourseOverview = () => {
                             Rate and Comment
                         </button>
                     </div>
-                    {/* Right Column: Instructor Info and Related Courses */}
-                    <div className="md:w-1/3 md:pl-8">
-                        <div className="bg-gray-800 p-4 rounded-lg mb-4">
-                            <h2 className="text-2xl font-semibold mb-2">Instructor</h2>
-                            <p>{course.author}</p>
-                        </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
-                            <h2 className="text-2xl font-semibold mb-2">Related Courses</h2>
-                            <p>No related courses available.</p>
-                        </div>
-                    </div>
+                    
                 </div>
                 {/* Comments Section */}
                 <div className="bg-gray-800 p-4 rounded-lg mt-8">
