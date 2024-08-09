@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-//const VITE_API_URL = 'https://davemwh.pythonanywhere.com/';
-const VITE_API_URL = 'http://localhost:8000/';
+const VITE_API_URL = 'https://davemwh.pythonanywhere.com/';
+//const VITE_API_URL = 'http://localhost:8000/';
 
 // Create an instance of axios
 const api = axios.create({

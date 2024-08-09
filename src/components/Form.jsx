@@ -41,8 +41,8 @@ const Form = ({ route, method }) => {
         console.log(response);
       }
     } catch (error) {
-      alert(`Something went rogue! ${error}`);
-      console.log(error.response.data);
+      showMessage('Network Error, Make Sure You Are CONNECTED to the Internet', 'error');
+      console.log(error);
     }
   };
 
