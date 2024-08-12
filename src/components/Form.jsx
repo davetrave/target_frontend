@@ -46,7 +46,7 @@ const Form = ({ route, method }) => {
         console.log(response);
       }
     } catch (error) {
-      showMessage(`Network Error, Make Sure You Are CONNECTED to the Internet ${error}`, 'error');
+      showMessage(`Error: ${error.response.data}`, 'error');
       console.log(error);
     }
   };
