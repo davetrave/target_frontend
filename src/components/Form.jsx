@@ -18,7 +18,7 @@ const Form = ({ route, method }) => {
   };
   
   const handleReg = (e) => {
-    navigate('register');
+    navigate("/register");
   }
 
 
@@ -85,7 +85,6 @@ const Form = ({ route, method }) => {
               className="neon-input"
             />
           </div>
-          <p className="text-sm">New here? <span className="link" onClick={handleReg}>Register</span></p>
           <div className="submit-container">
             <input
               type="submit"
@@ -93,6 +92,7 @@ const Form = ({ route, method }) => {
               className="neon-button"
             />
           </div>
+          <p className="text-white text-sm">New here? <span className="link" onClick={handleReg}>Register</span></p>
         </form>
       </div>
     </div>
