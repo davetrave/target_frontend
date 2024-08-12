@@ -46,7 +46,8 @@ const Form = ({ route, method }) => {
         console.log(response);
       }
     } catch (error) {
-      showMessage(`Error: ${error.response.data.detail}`, 'error');
+      if (error.response.data.detail) showMessage(`Error: ${error.response.data.detail}`, 'error');
+      else showMessage(`Error: ${error.response.data}`, 'error');
       console.log(error);
     }
   };
