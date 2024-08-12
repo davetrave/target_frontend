@@ -16,6 +16,11 @@ const Form = ({ route, method }) => {
   const handlePasswordOnChange = (e) => {
     setPassword(e.target.value);
   };
+  
+  const handleReg = (e) => {
+    navigate('register');
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,6 +85,7 @@ const Form = ({ route, method }) => {
               className="neon-input"
             />
           </div>
+          <p className="text-sm">New here? <span className="link" onClick={handleReg}>Register</span></p>
           <div className="submit-container">
             <input
               type="submit"
