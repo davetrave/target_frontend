@@ -223,7 +223,7 @@ const CourseOverview = () => {
                     <div className="md:w-1/3 md:pl-8">
                         <div className="bg-gray-800 p-4 rounded-lg mb-4">
                             <h2 className="text-2xl font-semibold mb-2">Instructor</h2>
-                            <p>{course.author}</p>
+                            <p>{course.author}- {course.preview_url}</p>
                         </div>
                         
                     </div>
