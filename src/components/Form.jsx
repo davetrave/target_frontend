@@ -8,6 +8,7 @@ const Form = ({ route, method }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const isLogin = method === "login";
 
   const handleUsernameOnChange = (e) => {
     setUsername(e.target.value);
@@ -95,8 +96,10 @@ const Form = ({ route, method }) => {
               className="neon-button"
             />
           </div>
-          <p className="text-white text-sm">New here? <span className="link" onClick={handleReg}>Register</span></p>
-        </form>
+          { isLogin && (
+              <p className="text-white text-sm">New here? <span className="link" onClick={handleReg}>Register</span></p>
+          )}
+       </form>
       </div>
     </div>
   );
