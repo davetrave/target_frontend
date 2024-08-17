@@ -14,7 +14,7 @@ const MyCourses = () => {
 
     if (course.verified) {
       showMessage('Enjoy your course!', 'error')
-      navigate(`/course/${courseId}`);
+      navigate(`/course/${course.course.id}`);
     }
     else {
       showMessage('Please, wait until your purchase is verified, We appreciate your patience!', 'error')
